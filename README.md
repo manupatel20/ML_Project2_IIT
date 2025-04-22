@@ -103,6 +103,22 @@ This project implements the gradient boosting tree classification algorithm from
 ------
 ---
 
+### Directory Structure
+```
+gradient_boosting_project/
+├── data/                  # Contains generated test datasets
+├── results/               # Contains test results and visualizations
+├── src/                   # Source code
+│   ├── __init__.py        # Package initialization
+│   ├── decision_tree.py   # Base decision tree regressor implementation
+│   ├── gradient_boosting.py # Gradient boosting classifier implementation
+│   └── data_generation.py # Test data generation utilities
+└── tests/                 # Test scripts
+    └── test_gradient_boosting.py # Test script for validation
+```
+---
+---
+
 ## Installation and Setup
 
 ### 1. Clone Repository
@@ -145,22 +161,6 @@ This will ask user to enter Dataset name from the given list
 
 Plot will be saved at results/decision_boundary_moons.png
 
----
----
-
-### Directory Structure
-```
-gradient_boosting_project/
-├── data/                  # Contains generated test datasets
-├── results/               # Contains test results and visualizations
-├── src/                   # Source code
-│   ├── __init__.py        # Package initialization
-│   ├── decision_tree.py   # Base decision tree regressor implementation
-│   ├── gradient_boosting.py # Gradient boosting classifier implementation
-│   └── data_generation.py # Test data generation utilities
-└── tests/                 # Test scripts
-    └── test_gradient_boosting.py # Test script for validation
-```
 ---
 ---
 
