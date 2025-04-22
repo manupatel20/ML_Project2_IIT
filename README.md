@@ -72,14 +72,7 @@ The same "from first principals" rules apply; please don't use SKLearn or any ot
 - What parameters have you exposed to users of your implementation in order to tune performance? (Also perhaps provide some basic usage examples.)
 
     - The following parameters are exposed to users:
-        - Parameter | Description
-        - n_estimators | Number of trees in the ensemble
-        - learning_rate | Shrinkage applied to each tree’s prediction
-        - max_depth | Maximum depth of individual trees
-        - min_samples_split | Minimum samples required to split a node
-        - min_samples_leaf | Minimum samples required to be at a leaf node
-        - max_leaf_nodes | (Optional) Maximum number of leaf nodes per tree
-        - random_state | For reproducibility
+        - dataset | The type of dataset to be used from the list ( More in Installation and Setup part)
 
 ---
 - Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
@@ -90,9 +83,7 @@ The same "from first principals" rules apply; please don't use SKLearn or any ot
      (Challenge | Cause/Reason | Workaround )
         - High-dimensional data ( >2D) | Visualization fails or becomes meaningless | Dimensionality reduction (PCA)
         - Multi-class classification | Current implementation only supports binary classification | Extend to one-vs-all or softmax trees
-        - Sparse or categorical features | No preprocessing or encoding logic yet | Add data preprocessing pipeline
-        - Very large datasets | Pure Python + recursion in trees can be slow | Optimize with vectorization or Cython
-
+       
 ---
 ---
 
@@ -106,15 +97,15 @@ This project implements the gradient boosting tree classification algorithm from
 ### Directory Structure
 ```
 ML_Project2_IIT/
-├── data/                  # Contains generated test datasets
-├── results/               # Contains test results and visualizations
-├── src/                   # Source code
-|   ├── main_n.py          # Main File 
-│   ├── __init__.py        # Package initialization
-│   ├── decision_tree.py   # Base decision tree regressor implementation
+├── data/                    # Contains generated test datasets
+├── results/                 # Contains test results and visualizations
+├── src/                     # Source code
+|   ├── main_n.py            # Main File 
+│   ├── __init__.py          # Package initialization
+│   ├── decision_tree.py     # Base decision tree regressor implementation
 │   ├── gradient_boosting.py # Gradient boosting classifier implementation
-│   └── data_generation.py # Test data generation utilities
-└── tests/                 # Test scripts
+│   └── data_generation.py   # Test data generation utilities
+└── tests/                   # Test scripts
     └── test_gradient_boosting.py # Test script for validation
 ```
 ---
@@ -256,7 +247,7 @@ The results show that increasing the number of estimators generally improves per
 
 The gradient boosting tree classification algorithm implementation successfully demonstrates the principles described in Elements of Statistical Learning. The algorithm shows strong performance across various datasets, particularly excelling on datasets with clear decision boundaries (Linear, Moons, XOR). The implementation struggles more with the Circles dataset, which has a more complex circular decision boundary that is challenging for axis-parallel splits used in decision trees.
 
-The hyperparameter testing confirms the importance of tuning the number of estimators, learning rate, and tree depth to achieve optimal performance for a given dataset. The implementation provides a solid foundation for understanding gradient boosting from first principles and can be extended to handle multi-class classification or regression tasks.
+The hyperparameter testing confirms the importance of tuning the number of estimators, learning rate, and tree depth to achieve optimal performance for a given dataset. The implementation provides a solid foundation for understanding gradient boosting from first principles.
 
 
 ---
@@ -267,7 +258,6 @@ The hyperparameter testing confirms the importance of tuning the number of estim
 Potential improvements to the implementation include:
 1. Support for multi-class classification
 2. Implementation of different loss functions
-3. Subsampling for stochastic gradient boosting
-4. Early stopping based on validation performance
-5. More sophisticated regularization techniques
-6. Parallel tree building for improved performance
+3. Early stopping based on validation performance
+4. More sophisticated regularization techniques
+5. Parallel tree building for improved performance
