@@ -1,6 +1,6 @@
 # Gradient Boosting Tree Classification Algorithm Implementation
 
-## Boosting Trees ( Given Task )
+## Boosting Trees ( Given Problem For Project )
 
 Implement again from first principles the gradient-boosting tree classification algorithm (with the usual fit-predict interface as in Project 1) as described in Sections 10.9-10.10 of Elements of Statistical Learning (2nd Edition). Answer the questions below as you did for Project 1. In this assignment, you'll be responsible for developing your own test data to ensure that your implementation is satisfactory. (Hint: Use the same directory structure as in Project 1.)
 
