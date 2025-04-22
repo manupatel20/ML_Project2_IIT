@@ -106,22 +106,21 @@ This project implements the gradient boosting tree classification algorithm from
 ## Installation and Setup
 
 ### 1. Clone Repository
-To ensure dependency management, create a virtual environment:
 ```sh
-git clone https://github.com/manupatel20/ML_Project1_IIT
+git clone https://github.com/manupatel20/ML_Project2_IIT
 ```
 
 ### 2. Create a Virtual Environment
 To ensure dependency management, create a virtual environment:
 for Windows
 ```sh
-cd .\ML_Project1_IIT\LassoHomotopy\
+cd .\ML_Project2_IIT\src
 python -m venv .env
 .env\scripts\activate
 ```
 for Mac
 ```sh
-cd .\ML_Project1_IIT\LassoHomotopy\
+cd .\ML_Project2_IIT\src\
 python -m venv .env
 source .env/bin/activate
 ```
@@ -136,18 +135,15 @@ pip install -r requirements.txt
 ---
 
 ### 4. Running the Model
-Run the following command to train and test the LASSO model using the Homotopy method:
+Run the following command:
 ```sh
-cd .\LassoHomotopy\tests\
-pytest .\test_LassoHomotopy.py -s
+python -m src.main_n
 ```
+This will ask user to enter Dataset name from the given list
+![WhatsApp Image 2025-04-22 at 17 51 11_617eaee8](https://github.com/user-attachments/assets/0ca184c3-55b5-4b72-b896-3e5fd9a2354a)
+![WhatsApp Image 2025-04-22 at 17 56 43_b818a2b6](https://github.com/user-attachments/assets/cc7419b8-4dc2-4ea4-bfc7-195877e5957a)
 
-
-
-where:
-- collinear_data.csv is the input dataset.
-- test from different files by changing file names in test_LassoHomotopy.py
-
+Plot will be saved at results/decision_boundary_moons.png
 
 ---
 ---
