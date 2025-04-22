@@ -105,10 +105,11 @@ This project implements the gradient boosting tree classification algorithm from
 
 ### Directory Structure
 ```
-gradient_boosting_project/
+ML_Project2_IIT/
 ├── data/                  # Contains generated test datasets
 ├── results/               # Contains test results and visualizations
 ├── src/                   # Source code
+|   ├── main_n.py          # Main File 
 │   ├── __init__.py        # Package initialization
 │   ├── decision_tree.py   # Base decision tree regressor implementation
 │   ├── gradient_boosting.py # Gradient boosting classifier implementation
