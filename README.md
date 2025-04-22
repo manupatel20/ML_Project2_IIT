@@ -1,5 +1,11 @@
 # Gradient Boosting Tree Classification Algorithm Implementation
 
+## Boosting Trees ( Given Task )
+
+Implement again from first principles the gradient-boosting tree classification algorithm (with the usual fit-predict interface as in Project 1) as described in Sections 10.9-10.10 of Elements of Statistical Learning (2nd Edition). Answer the questions below as you did for Project 1. In this assignment, you'll be responsible for developing your own test data to ensure that your implementation is satisfactory. (Hint: Use the same directory structure as in Project 1.)
+
+The same "from first principals" rules apply; please don't use SKLearn or any other implementation. Please provide examples in your README that will allow the TAs to run your model code and whatever tests you include. As usual, extra credit may be given for an "above and beyond" effort.
+
 ---
 ---
 ## Team Members
@@ -12,16 +18,15 @@
 ## Table of Contents
 
 - [Questions](#questions)
+- [Overview](#overview)
 - [Installation and Setup](#installation-and-setup)
-- [Testing Different Datasets](#testing-different-datasets)
-- [Compare.py and generate.py](#comparepy-and-generatepy)
-- [LASSO Regression using the Homotopy Algorithm ( Extra Details )](#lasso-regression-using-the-homotopy-algorithm--extra-details-)
-  - [Introduction](#introduction)
-  - [What is LASSO Regression?](#what-is-lasso-regression)
-  - [Comparison Between Linear Regression and LASSO](#comparison-between-linear-regression-and-lasso)
-  - [What is the Homotopy Algorithm?](#what-is-the-homotopy-algorithm)
-  - [Conclusion](#conclusion)
-  - [References](#references)
+- [Directory Structure](#directory-structure)
+- [Components](#components)
+- [Algorithm Description](#algorithm-description)
+- [Test Results](#test-results)
+- [Hyperparameter Testing](#hyperparameter-testing)
+- [Conclusions](#conclusions)
+- [Future Improvements](#future-improvements)
 
 ---
 ---
@@ -89,11 +94,63 @@
         - Very large datasets | Pure Python + recursion in trees can be slow | Optimize with vectorization or Cython
 
 ---
+---
 
 ## Overview
+
 This project implements the gradient boosting tree classification algorithm from first principles as described in Sections 10.9-10.10 of Elements of Statistical Learning (2nd Edition). The implementation follows the fit-predict interface pattern and includes comprehensive testing on various synthetic datasets.
 
-## Implementation Details
+------
+---
+
+## Installation and Setup
+
+### 1. Clone Repository
+To ensure dependency management, create a virtual environment:
+```sh
+git clone https://github.com/manupatel20/ML_Project1_IIT
+```
+
+### 2. Create a Virtual Environment
+To ensure dependency management, create a virtual environment:
+for Windows
+```sh
+cd .\ML_Project1_IIT\LassoHomotopy\
+python -m venv .env
+.env\scripts\activate
+```
+for Mac
+```sh
+cd .\ML_Project1_IIT\LassoHomotopy\
+python -m venv .env
+source .env/bin/activate
+```
+
+### 3. Install Dependencies
+Ensure that you have all required dependencies installed by running:
+```sh
+cd ..
+pip install -r requirements.txt
+```
+
+---
+
+### 4. Running the Model
+Run the following command to train and test the LASSO model using the Homotopy method:
+```sh
+cd .\LassoHomotopy\tests\
+pytest .\test_LassoHomotopy.py -s
+```
+
+
+
+where:
+- collinear_data.csv is the input dataset.
+- test from different files by changing file names in test_LassoHomotopy.py
+
+
+---
+---
 
 ### Directory Structure
 ```
@@ -108,6 +165,8 @@ gradient_boosting_project/
 └── tests/                 # Test scripts
     └── test_gradient_boosting.py # Test script for validation
 ```
+---
+---
 
 ### Components
 
@@ -145,6 +204,9 @@ gradient_boosting_project/
    - Tests different hyperparameter configurations
    - Visualizes decision boundaries
 
+---
+---
+
 ## Algorithm Description
 
 The gradient boosting algorithm implemented in this project follows these steps:
@@ -157,6 +219,9 @@ The gradient boosting algorithm implemented in this project follows these steps:
    - Update the model by adding the new tree's predictions scaled by the learning rate
 3. **Prediction**: Convert final log-odds to probabilities using the sigmoid function and classify based on a threshold
 
+---
+---
+
 ## Test Results
 
 The implementation was tested on various synthetic datasets with the following results:
@@ -167,6 +232,10 @@ The implementation was tested on various synthetic datasets with the following r
 | Nonlinear | 0.6350   | 0.5676    | 0.7159 | 0.6332   | 0.7165  |![WhatsApp Image 2025-04-22 at 16 54 58_b56529b3](https://github.com/user-attachments/assets/5c16a74f-d85d-4c26-8ac8-699e3230a7e4) | ![WhatsApp Image 2025-04-22 at 16 04 33_953c4320](https://github.com/user-attachments/assets/73012f6e-7ed8-4965-b491-d1b76b4a14a9) |
 | Moons     | 0.9850   | 0.9850    | 0.9800 | 0.9849   | 0.9993  |![WhatsApp Image 2025-04-22 at 16 55 38_29b31a32](https://github.com/user-attachments/assets/e12a7c47-a3d1-4c67-89cb-f589232ee47c) | ![WhatsApp Image 2025-04-22 at 16 06 10_13aaa98e](https://github.com/user-attachments/assets/f505cfab-ee3b-4b2a-8ce6-8d99d965e6ee) |
 | Circles   | 0.7450   | 0.7168    | 0.8100 | 0.7606   | 0.7846  |![WhatsApp Image 2025-04-22 at 16 56 15_4e3c3d02](https://github.com/user-attachments/assets/27c8e073-1904-4bdf-b6c0-ac33b9edb3f7) | ![WhatsApp Image 2025-04-22 at 16 07 46_52d68e6d](https://github.com/user-attachments/assets/19faee88-d623-42ae-a983-a851987b2bcd) |
+
+
+---
+---
 
 
 ### Hyperparameter Testing
@@ -181,11 +250,20 @@ Different hyperparameter configurations were tested on the Nonlinear dataset:
 
 The results show that increasing the number of estimators generally improves performance, with diminishing returns after a certain point. The learning rate and maximum tree depth also significantly impact model performance, with deeper trees potentially leading to overfitting on the training data.
 
+
+---
+---
+
+
 ## Conclusions
 
 The gradient boosting tree classification algorithm implementation successfully demonstrates the principles described in Elements of Statistical Learning. The algorithm shows strong performance across various datasets, particularly excelling on datasets with clear decision boundaries (Linear, Moons, XOR). The implementation struggles more with the Circles dataset, which has a more complex circular decision boundary that is challenging for axis-parallel splits used in decision trees.
 
 The hyperparameter testing confirms the importance of tuning the number of estimators, learning rate, and tree depth to achieve optimal performance for a given dataset. The implementation provides a solid foundation for understanding gradient boosting from first principles and can be extended to handle multi-class classification or regression tasks.
+
+
+---
+---
 
 ## Future Improvements
 
